@@ -28,7 +28,7 @@ public static void main(String args[] ) throws Exception
   System.out.println("Number of leaf nodes in binary tree :"+getLeafCountOfBinaryTree(rootNode));
 
 Scanner sc = new Scanner(System.in);
-int test = sc.nextInt();int ppl;int sib=0,allowed=0;
+int test = sc.nextInt();int ppl;
 for(int i=0; i<test; i++)
 {
 ppl=sc.nextInt();
