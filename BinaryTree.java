@@ -4,11 +4,7 @@ public class BinaryTree
  public static class TreeNode
  {
   int data;
-  TreeNode n1;
-  TreeNode n2;
-TreeNode n3;
-  TreeNode n4;
-  TreeNode n5;
+  TreeNode n[]=new TreeNode[5];
   
   TreeNode(int data)
   {
@@ -19,22 +15,21 @@ TreeNode n3;
 {
   if(node == null)      
     return 0;
-  if(node.n1 ==null && node.n2==null&& node.n3==null&& node.n4==null&& node.n5==null)     
+  if(node.n[0] ==null && node.n[1]==null&& node.n[2]==null&& node.n[3]==null&& node.n[4]==null)     
     return 1;           
   else
-    return getLeafCountOfBinaryTree(node.n1)+ getLeafCountOfBinaryTree(node.n2)+getLeafCountOfBinaryTree(node.n3)+getLeafCountOfBinaryTree(node.n4)+getLeafCountOfBinaryTree(node.n5);     
+    return getLeafCountOfBinaryTree(node.n[0])+ getLeafCountOfBinaryTree(node.n[1])+getLeafCountOfBinaryTree(node.n[2])+getLeafCountOfBinaryTree(node.n[3])+getLeafCountOfBinaryTree(node.n[4]);     
 }
 
 public static void main(String args[] ) throws Exception
 {
-  BinaryTree bi=new BinaryTree();
-  TreeNode rootNode=createBinaryTree();
-  System.out.println("Number of leaf nodes in binary tree :"+getLeafCountOfBinaryTree(rootNode));
 
 Scanner sc = new Scanner(System.in);
-int test = sc.nextInt();int ppl;int sib=0,allowed=0;
+int test = sc.nextInt();int ppl;
 for(int i=0; i<test; i++)
 {
+  BinaryTree bi=new BinaryTree();
+  
 ppl=sc.nextInt();
 int arr[]=new int[(ppl-1)*2];
 for(int j=0;j<(ppl-1)*2;j=j+2)
@@ -42,25 +37,29 @@ for(int j=0;j<(ppl-1)*2;j=j+2)
 arr[j]=sc.nextInt();
 arr[j+1]=sc.nextInt();
 }
+TreeNode rnode=createBinaryTree(arr);
+  System.out.println("Number of leaf nodes in binary tree :"+getLeafCountOfBinaryTree(rnode));
+
 }
+
 }
- public static TreeNode createBinaryTree()
+ public static TreeNode createBinaryTree(int[] arr)
  {
-TreeNode rootNode =new TreeNode(0);
-  TreeNode node1=new TreeNode(1);
-  TreeNode node2=new TreeNode(2);
-  TreeNode node3=new TreeNode(3);
-  TreeNode node4=new TreeNode(4);
-  TreeNode node5=new TreeNode(5);
-  TreeNode node6=new TreeNode(6);
-  TreeNode node7=new TreeNode(7);
-  TreeNode node8=new TreeNode(8);
- 
-  rootNode.n1=node1;
-  rootNode.n2=node2;
-  
-  node2.n1=node3;node2.n2=node4;node2.n3=node5;
-node3.n1=node6;node3.n2=node7;node4.n1=node8;
-  return rootNode;
+int ppl=(arr.length/2)+1;
+TreeNode node[]=new TreeNode[ppl];
+for(int p=0;p<ppl;p++)
+{
+TreeNode node[p]=new TreeNode(p);
+}
+int num=0,x=0;
+for(int i=1;i<arr.length;i=i+2)
+{
+if(arr[i]==num)
+{
+node[num].n[x]=node[arr[i-1]];
+x=x+1;  
+}
+}
+  return node[0];
   }
 }
