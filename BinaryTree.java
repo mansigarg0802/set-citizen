@@ -4,8 +4,12 @@ public class BinaryTree
  public static class TreeNode
  {
   int data;
-  TreeNode left;
-  TreeNode right;
+  TreeNode n1;
+  TreeNode n2;
+TreeNode n3;
+  TreeNode n4;
+  TreeNode n5;
+  
   TreeNode(int data)
   {
    this.data=data;
@@ -15,10 +19,10 @@ public class BinaryTree
 {
   if(node == null)      
     return 0;
-  if(node.left ==null && node.right==null)     
+  if(node.n1 ==null && node.n2==null&& node.n3==null&& node.n4==null&& node.n5==null)     
     return 1;           
   else
-    return getLeafCountOfBinaryTree(node.left)+ getLeafCountOfBinaryTree(node.right);     
+    return getLeafCountOfBinaryTree(node.n1)+ getLeafCountOfBinaryTree(node.n2)+getLeafCountOfBinaryTree(node.n3)+getLeafCountOfBinaryTree(node.n4)+getLeafCountOfBinaryTree(node.n5);     
 }
 
 public static void main(String args[] ) throws Exception
@@ -28,7 +32,7 @@ public static void main(String args[] ) throws Exception
   System.out.println("Number of leaf nodes in binary tree :"+getLeafCountOfBinaryTree(rootNode));
 
 Scanner sc = new Scanner(System.in);
-int test = sc.nextInt();int ppl;
+int test = sc.nextInt();int ppl;int sib=0,allowed=0;
 for(int i=0; i<test; i++)
 {
 ppl=sc.nextInt();
@@ -46,11 +50,17 @@ TreeNode rootNode =new TreeNode(0);
   TreeNode node1=new TreeNode(1);
   TreeNode node2=new TreeNode(2);
   TreeNode node3=new TreeNode(3);
+  TreeNode node4=new TreeNode(4);
+  TreeNode node5=new TreeNode(5);
+  TreeNode node6=new TreeNode(6);
+  TreeNode node7=new TreeNode(7);
+  TreeNode node8=new TreeNode(8);
+ 
+  rootNode.n1=node1;
+  rootNode.n2=node2;
   
-  rootNode.left=node1;
-  rootNode.right=node2;
-  
-  node2.left=node3;
+  node2.n1=node3;node2.n2=node4;node2.n3=node5;
+node3.n1=node6;node3.n2=node7;node4.n1=node8;
   return rootNode;
   }
 }
