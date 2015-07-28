@@ -46,12 +46,16 @@ TreeNode rnode=createBinaryTree(arr);
  public static TreeNode createBinaryTree(int[] arr)
  {
 int ppl=(arr.length/2)+1;
+System.out.println(ppl);
 TreeNode node[]=new TreeNode[ppl];
+System.out.println(node.length);
 for(int p=0;p<ppl;p++)
 {
-TreeNode node[p]=new TreeNode(p);
+node[p]=new TreeNode(p);
 }
-int num=0,x=0;
+int x=0;
+for(int num=0;num<ppl;num++)
+{
 for(int i=1;i<arr.length;i=i+2)
 {
 if(arr[i]==num)
@@ -59,6 +63,8 @@ if(arr[i]==num)
 node[num].n[x]=node[arr[i-1]];
 x=x+1;  
 }
+}
+x=0;
 }
   return node[0];
   }
